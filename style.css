@@ -99,4 +99,27 @@ footer p{
         align-items:flex-start;
         gap:25px;
     }
+.play-button.is-playing {
+    width: 78px;
+    height: 90px;
+    border: none;
+    position: relative;
+}
+
+.play-button.is-playing::before,
+.play-button.is-playing::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 22px;
+    height: 90px;
+    background: white;
+}
+
+.play-button.is-playing::before {
+    left: 0;
+}
+
+.play-button.is-playing::after {
+    right: 0;
 }
