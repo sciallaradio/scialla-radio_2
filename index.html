@@ -11,34 +11,43 @@
 
     <main class="home">
 
-        <section class="player">
+       <section class="player">
 
-            <div class="logo">
-                <img src="logo.png" alt="Scialla Radio">
-            </div>
+    <div class="logo">
+        <img src="logo.png" alt="Scialla Radio">
+    </div>
 
-            <button class="play-button" aria-label="Play"></button>
+    <button class="play-button" id="playButton" aria-label="Play"></button>
 
-            <div class="track">
-                <h2>Live Radio</h2>
-                <p>Broadcasting from the Mediterranean</p>
-            </div>
+    <audio id="radioPlayer">
+        <source src="https://play.radioking.io/scialla-radio" type="audio/mpeg">
+    </audio>
 
-        </section>
+    <div class="track">
+        <h2>Live Radio</h2>
+        <p>Broadcasting from somewhere under the sun</p>
+    </div>
 
-        <footer>
+</section>
 
-            <div class="socials">
-                <a href="#" target="_blank">Instagram</a>
-                <a href="#" target="_blank">SoundCloud</a>
-                <a href="mailto:hello@scialla.radio">Mail</a>
-            </div>
-
-            <p>Created and curated by Scialla Radio</p>
-
-        </footer>
+                </footer>
 
     </main>
+
+    <script>
+    const playButton = document.getElementById("playButton");
+    const radioPlayer = document.getElementById("radioPlayer");
+
+    playButton.addEventListener("click", () => {
+        if (radioPlayer.paused) {
+            radioPlayer.play();
+            playButton.classList.add("is-playing");
+        } else {
+            radioPlayer.pause();
+            playButton.classList.remove("is-playing");
+        }
+    });
+    </script>
 
 </body>
 </html>
