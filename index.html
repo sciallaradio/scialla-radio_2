@@ -24,28 +24,57 @@
             </audio>
 
             <div class="track">
-                <h2>Live Radio</h2>
-                <p>Broadcasting from somewhere under the sun</p>
-            </div>
+    <h2 id="trackTitle">Loading...</h2>
+    <p id="trackArtist">Please wait...</p>
+</div>
 
         </section>
 
     </main>
 
     <script>
-    const playButton = document.getElementById("playButton");
-    const radioPlayer = document.getElementById("radioPlayer");
+const playButton = document.getElementById("playButton");
+const radioPlayer = document.getElementById("radioPlayer");
 
-    playButton.addEventListener("click", () => {
-        if (radioPlayer.paused) {
-            radioPlayer.play();
-            playButton.classList.add("is-playing");
-        } else {
-            radioPlayer.pause();
-            playButton.classList.remove("is-playing");
-        }
-    });
-    </script>
+playButton.addEventListener("click", () => {
+    if (radioPlayer.paused) {
+        radioPlayer.play();
+        playButton.classList.add("is-playing");
+    } else {
+        radioPlayer.pause();
+        playButton.classList.remove("is-playing");
+    }
+});
+
+async function updateTrackInfo() {
+
+    try {
+
+        const response = await fetch(
+            "https://api.radioking.io/widget/radio/scialla-radio/track/current"
+        );
+
+        const data = await response.json();
+
+        document.getElementById("trackTitle").textContent =
+            data.title || "Scialla Radio";
+
+        document.getElementById("trackArtist").textContent =
+            data.artist || "";
+
+    } catch (error) {
+
+        document.getElementById("trackTitle").textContent = "Scialla Radio";
+        document.getElementById("trackArtist").textContent = "";
+
+    }
+
+}
+
+updateTrackInfo();
+
+setInterval(updateTrackInfo, 10000);
+</script>
 
 </body>
 </html>
