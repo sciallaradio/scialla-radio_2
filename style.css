@@ -12,11 +12,12 @@
 }
 
 body {
-    background: #ff2500;
-    color: #fff;
+    background: #E9E2D3;
+    color: #D92516;
     font-family: "Botch", Arial, sans-serif;
     min-height: 100vh;
 }
+
 .home {
     min-height: 100vh;
     padding: 0 9vw;
@@ -42,7 +43,7 @@ body {
     height: 0;
     border-top: 45px solid transparent;
     border-bottom: 45px solid transparent;
-    border-left: 78px solid white;
+    border-left: 78px solid #D92516;
     background: none;
     cursor: pointer;
 }
@@ -61,7 +62,7 @@ body {
     top: 0;
     width: 22px;
     height: 90px;
-    background: white;
+    background: #D92516;
 }
 
 .play-button.is-playing::before {
@@ -74,17 +75,67 @@ body {
 
 .track h2 {
     font-size: clamp(32px, 3vw, 56px);
+    font-weight: normal;
     margin-bottom: 10px;
 }
 
 .track p {
     font-size: clamp(18px, 1.6vw, 28px);
+    font-weight: normal;
+}
+
+footer {
+    position: fixed;
+    left: 9vw;
+    right: 9vw;
+    bottom: 55px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.socials {
+    display: flex;
+    gap: 30px;
+}
+
+.socials a {
+    color: #D92516;
+    text-decoration: none;
+    font-size: 22px;
+}
+
+footer p {
+    color: #D92516;
+    font-size: 16px;
 }
 
 @media (max-width: 900px) {
+    .home {
+        padding: 9vh 8vw;
+        justify-content: flex-start;
+    }
+
     .player {
         flex-direction: column;
         align-items: flex-start;
         gap: 35px;
+    }
+
+    .logo img {
+        width: 170px;
+    }
+
+    footer {
+        position: static;
+        margin-top: 90px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .socials {
+        flex-direction: column;
+        gap: 12px;
     }
 }
